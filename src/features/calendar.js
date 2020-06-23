@@ -1,41 +1,48 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { createSlice } from '@reduxjs/toolkit';
+import moment from 'moment';
 
-export const monthFeature = createSlice({
-  name: 'month',
+export const calendarFeature = createSlice({
+  name: 'calendar',
   initialState: {
-    month: [],
+    events: [],
     errors: [],
+    appMoment: moment().format(),
     loading: false,
+    mode: 'month',
   },
   reducers: {
-    fetchmonthRequest: state => {
+    fetchcalendarRequest: state => {
       state.loading = true;
     },
-    fetchmonthFail: (state, action) => {
+    fetchcalendarFail: (state, action) => {
       state.loading = false;
       state.errors.push(action.payload);
     },
-    fetchmonthSuccess: (state, action) => {
+    fetchcalendarSuccess: (state, action) => {
       state.loading = false;
       if (action.payload) {
-        state.month = action.payload;
+        state.calendar = action.payload;
       }
     },
   },
 });
 
-export const { fetchmonthRequest, fetchmonthSuccess, fetchmonthFail } = monthFeature.actions;
-export default monthFeature.reducer;
+export const {
+  fetchcalendarRequest,
+  fetchcalendarSuccess,
+  fetchcalendarFail,
+} = calendarFeature.actions;
+export default calendarFeature.reducer;
 
-function* fetchmonthWorker() {
+function* fetchcalendarWorker() {
   try {
-    yield put(fetchmonthSuccess());
+    yield put(fetchcalendarSuccess());
   } catch (e) {
-    yield put(fetchmonthFail(e.message));
+    yield put(fetchcalendarFail(e.message));
   }
 }
 
-export function* monthSaga() {
-  yield takeEvery(fetchmonthRequest().type, fetchmonthWorker);
+export function* calendarSaga() {
+  yield takeEvery(fetchcalendarRequest().type, fetchcalendarWorker);
 }
