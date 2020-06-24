@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import ModeButton from '../ModeButton';
-import ArrowButton from '../ArrowButton';
 import AddEventsButton from '../AddEventsButton';
+import DateChanger from '../DateChanger';
 
 const Header = () => {
   return (
@@ -12,11 +12,7 @@ const Header = () => {
         <ModeButton title={'Week'} />
         <ModeButton title={'Day'} />
       </div>
-      <div className={styles['date-changer']}>
-        <ArrowButton />
-        <span>November 2019</span>
-        <ArrowButton order={'right'} />
-      </div>
+      <DateChanger />
       <AddEventsButton />
     </header>
   );

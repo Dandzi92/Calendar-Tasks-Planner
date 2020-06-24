@@ -8,13 +8,13 @@ const reducer = {
   calendar,
 };
 
-function* rootSaga() {
-  yield all([calendarSaga()]);
-}
+// function* rootSaga() {
+//   yield all([calendarSaga()]);
+// }
 
-const initialiseSagaMiddleware = createSagaMiddleware();
+// const initialiseSagaMiddleware = createSagaMiddleware();
 
-const middleware = [...getDefaultMiddleware(), initialiseSagaMiddleware];
+const middleware = [...getDefaultMiddleware()];
 if (process.env.NODE_ENV === `development`) {
   middleware.push(logger);
 }
@@ -23,7 +23,5 @@ const store = configureStore({
   middleware,
   devTools: process.env.NODE_ENV !== 'production',
 });
-
-initialiseSagaMiddleware.run(rootSaga);
 
 export default store;

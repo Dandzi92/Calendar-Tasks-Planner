@@ -12,37 +12,30 @@ export const calendarFeature = createSlice({
     mode: 'month',
   },
   reducers: {
-    fetchcalendarRequest: state => {
-      state.loading = true;
+    addMoment: (state, { payload }) => {
+      const currentMoment = moment(state.appMoment);
+      currentMoment.add('1', `${payload}`);
+      state.appMoment = currentMoment.format();
     },
-    fetchcalendarFail: (state, action) => {
-      state.loading = false;
-      state.errors.push(action.payload);
-    },
-    fetchcalendarSuccess: (state, action) => {
-      state.loading = false;
-      if (action.payload) {
-        state.calendar = action.payload;
-      }
+    subtractMoment: (state, { payload }) => {
+      const currentMoment = moment(state.appMoment);
+      currentMoment.subtract('1', `${payload}`);
+      state.appMoment = currentMoment.format();
     },
   },
 });
 
-export const {
-  fetchcalendarRequest,
-  fetchcalendarSuccess,
-  fetchcalendarFail,
-} = calendarFeature.actions;
+export const { addMoment, subtractMoment } = calendarFeature.actions;
 export default calendarFeature.reducer;
 
-function* fetchcalendarWorker() {
-  try {
-    yield put(fetchcalendarSuccess());
-  } catch (e) {
-    yield put(fetchcalendarFail(e.message));
-  }
-}
+// function* fetchcalendarWorker() {
+//   try {
+//     yield put(fetchcalendarSuccess());
+//   } catch (e) {
+//     yield put(fetchcalendarFail(e.message));
+//   }
+// }
 
-export function* calendarSaga() {
-  yield takeEvery(fetchcalendarRequest().type, fetchcalendarWorker);
-}
+// export function* calendarSaga() {
+//   yield takeEvery(fetchcalendarRequest().type, fetchcalendarWorker);
+// }

@@ -1,0 +1,19 @@
+.head-cell {
+  border: 1px solid black;
+  text-align: center;
+  width: 90px;
+  height: 90px;
+}
+
+.cell {
+  border: 1px solid rgb(129, 128, 128);
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+
+.day {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}

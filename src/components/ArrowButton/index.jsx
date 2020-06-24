@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import styles from './styles.module.scss';
 
-const ArrowButton = ({ order }) => {
+const ArrowButton = ({ order, handler }) => {
   return (
-    <button className={styles.button}>
+    <button onClick={handler} className={styles.button}>
       <i className={classnames(styles.arrow, styles[order])} />
     </button>
   );

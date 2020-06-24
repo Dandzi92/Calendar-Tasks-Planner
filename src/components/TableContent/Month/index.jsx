@@ -11,7 +11,7 @@ const Month = ({ appMoment }) => {
     .clone()
     .date(1)
     .day();
-  const calendarRowsCount = monthStartWeekday < 6 ? 5 : 6;
+  const calendarRowsCount = monthStartWeekday < 6 && monthStartWeekday !== 0 ? 5 : 6;
   let isMonthDaysMode = false;
   window.currentMoment = currentMoment;
   return (
@@ -19,7 +19,9 @@ const Month = ({ appMoment }) => {
       <thead>
         <tr>
           {Object.values(weekDays).map(cell => (
-            <th key={cell}>{cell}</th>
+            <th className={styles['head-cell']} key={cell}>
+              {cell}
+            </th>
           ))}
         </tr>
       </thead>
@@ -35,10 +37,14 @@ const Month = ({ appMoment }) => {
                 isMonthDaysMode = true;
               }
               if (isMonthDaysMode) {
-                returnValue = <td key={i}>{counter}</td>;
+                returnValue = (
+                  <td className={styles.cell} key={i}>
+                    <span className={styles.day}>{counter}</span>
+                  </td>
+                );
                 counter += 1;
               } else {
-                returnValue = <td key={i}></td>;
+                returnValue = <td className={styles.cell} key={i}></td>;
               }
               if (counter > daysCount) {
                 isMonthDaysMode = false;
