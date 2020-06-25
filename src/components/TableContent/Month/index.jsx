@@ -11,9 +11,11 @@ const Month = ({ appMoment }) => {
     .clone()
     .date(1)
     .day();
-  const calendarRowsCount = monthStartWeekday < 6 && monthStartWeekday !== 0 ? 5 : 6;
+
+  const daysAmountUnshift = monthStartWeekday === 0 ? 6 : monthStartWeekday - 1;
+  const calendarRowsCount = Math.ceil((daysCount + daysAmountUnshift) / 7);
   let isMonthDaysMode = false;
-  window.currentMoment = currentMoment;
+
   return (
     <>
       <thead>
