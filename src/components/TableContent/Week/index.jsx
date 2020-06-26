@@ -5,8 +5,7 @@ import styles from './styles.module.scss';
 
 const Week = ({ appMoment }) => {
   const currentMoment = moment(appMoment);
-  let weekStartDay = currentMoment.clone().day(1);
-
+  let weekStartDay = currentMoment.date(currentMoment.startOf('isoWeek').date());
   return (
     <>
       <thead>

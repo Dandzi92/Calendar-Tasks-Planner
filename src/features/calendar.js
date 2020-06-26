@@ -9,7 +9,7 @@ export const calendarFeature = createSlice({
     errors: [],
     appMoment: moment().format(),
     loading: false,
-    mode: 'week',
+    mode: 'day',
   },
   reducers: {
     addMoment: (state, { payload }) => {
@@ -22,10 +22,13 @@ export const calendarFeature = createSlice({
       currentMoment.subtract('1', `${payload}`);
       state.appMoment = currentMoment.format();
     },
+    changeMode: (state, { payload }) => {
+      state.mode = payload;
+    },
   },
 });
 
-export const { addMoment, subtractMoment } = calendarFeature.actions;
+export const { addMoment, subtractMoment, changeMode } = calendarFeature.actions;
 export default calendarFeature.reducer;
 
 // function* fetchcalendarWorker() {
