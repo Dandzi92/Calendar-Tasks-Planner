@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import { dayPeriods } from '../../../utils/dayPeriods';
 
@@ -15,6 +16,10 @@ const Day = ({ appMoment }) => {
       ))}
     </tbody>
   );
+};
+
+Day.propTypes = {
+  appMoment: PropTypes.string,
 };
 
 export default Day;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 const ModeButton = ({ title, handler }) => {
@@ -7,6 +8,11 @@ const ModeButton = ({ title, handler }) => {
       {title}
     </button>
   );
+};
+
+ModeButton.propTypes = {
+  title: PropTypes.string,
+  handler: PropTypes.func,
 };
 
 export default ModeButton;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ArrowButton from '../ArrowButton';
 import { modes } from '../../utils/modes';
@@ -14,6 +14,7 @@ const DateChanger = () => {
     appMoment: state.calendar.appMoment,
   }));
   const dispatch = useDispatch();
+  const [isChoiceMenuOpened, toggleChoiceMenu] = useState(false);
   const momentAmountToChange =
     mode === modes.first ? 'months' : mode === modes.second ? 'weeks' : 'days';
   const Component =
@@ -21,7 +22,7 @@ const DateChanger = () => {
   return (
     <div className={styles['date-changer']}>
       <ArrowButton handler={() => dispatch(subtractMoment(momentAmountToChange))} />
-      <Component appMoment={appMoment} />
+      <Component handler={() => toggleChoiceMenu(!isChoiceMenuOpened)} appMoment={appMoment} />
       <ArrowButton order={'right'} handler={() => dispatch(addMoment(momentAmountToChange))} />
     </div>
   );

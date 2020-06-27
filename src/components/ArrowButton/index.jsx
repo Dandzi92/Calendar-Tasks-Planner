@@ -17,6 +17,7 @@ ArrowButton.defaultProps = {
 
 ArrowButton.propTypes = {
   order: PropTypes.string,
+  handler: PropTypes.func,
 };
 
 export default ArrowButton;

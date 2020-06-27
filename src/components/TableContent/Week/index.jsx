@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { weekDays } from '../../../utils/weekDays';
 import moment from 'moment';
 import styles from './styles.module.scss';
@@ -32,6 +33,10 @@ const Week = ({ appMoment }) => {
       </tbody>
     </>
   );
+};
+
+Week.propTypes = {
+  appMoment: PropTypes.string,
 };
 
 export default Week;
