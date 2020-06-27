@@ -3,6 +3,10 @@
   text-align: center;
   width: 90px;
   height: 90px;
+  &.menu {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .cell {
@@ -10,6 +14,14 @@
   width: 90px;
   height: 90px;
   position: relative;
+  &.menu {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(184, 182, 182);
+    }
+  }
 }
 
 .day {

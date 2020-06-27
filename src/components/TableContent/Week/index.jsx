@@ -7,11 +7,12 @@ import styles from './styles.module.scss';
 const Week = ({ appMoment }) => {
   const currentMoment = moment(appMoment);
   let weekStartDay = currentMoment.date(currentMoment.startOf('isoWeek').date());
+
   return (
     <>
       <thead>
         <tr>
-          {Object.values(weekDays).map(cell => (
+          {Object.values(weekDays.full).map(cell => (
             <th className={styles['head-cell']} key={cell}>
               {cell}
             </th>

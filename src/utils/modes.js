@@ -1,5 +1,5 @@
 export const modes = {
-  first: 'month',
-  second: 'week',
-  third: 'day',
+  MONTH: 'month',
+  WEEK: 'week',
+  DAY: 'day',
 };

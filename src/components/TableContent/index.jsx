@@ -1,16 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Week from './Week';
-import Month from './Month';
-import Day from './Day';
-import { modes } from '../../utils/modes';
+import { modeContents } from './modeComponents';
 
 const TableContent = () => {
   const { mode, appMoment } = useSelector(state => ({
     mode: state.calendar.mode,
     appMoment: state.calendar.appMoment,
   }));
-  const Component = mode === modes.first ? Month : mode === modes.second ? Week : Day;
+  const Component = modeContents[mode].component;
   return <Component appMoment={appMoment} />;
 };
 

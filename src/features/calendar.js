@@ -22,13 +22,17 @@ export const calendarFeature = createSlice({
       currentMoment.subtract('1', `${payload}`);
       state.appMoment = currentMoment.format();
     },
+    setMoment: (state, { payload }) => {
+      const currentMoment = moment(payload);
+      state.appMoment = currentMoment.format();
+    },
     changeMode: (state, { payload }) => {
       state.mode = payload;
     },
   },
 });
 
-export const { addMoment, subtractMoment, changeMode } = calendarFeature.actions;
+export const { addMoment, subtractMoment, changeMode, setMoment } = calendarFeature.actions;
 export default calendarFeature.reducer;
 
 // function* fetchcalendarWorker() {
