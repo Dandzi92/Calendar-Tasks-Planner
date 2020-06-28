@@ -1,0 +1,13 @@
+.week {
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    color: rgb(75, 72, 72);
+  }
+}
+
+.container {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}

@@ -29,10 +29,19 @@ export const calendarFeature = createSlice({
     changeMode: (state, { payload }) => {
       state.mode = payload;
     },
+    resetToNow: state => {
+      state.appMoment = moment().format();
+    },
   },
 });
 
-export const { addMoment, subtractMoment, changeMode, setMoment } = calendarFeature.actions;
+export const {
+  addMoment,
+  subtractMoment,
+  changeMode,
+  setMoment,
+  resetToNow,
+} = calendarFeature.actions;
 export default calendarFeature.reducer;
 
 // function* fetchcalendarWorker() {
