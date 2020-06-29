@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import ResetMomentButton from '../../ResetButton';
 
 const WeekMenu = ({ appMoment }) => {
-  window.moment = moment();
   const currentMoment = moment(appMoment);
   const dispatch = useDispatch();
   const monthBeginTime = currentMoment
