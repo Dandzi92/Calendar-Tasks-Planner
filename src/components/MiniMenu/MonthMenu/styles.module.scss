@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.month {
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(53, 53, 53);
+  }
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.months {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 225px;
+}
