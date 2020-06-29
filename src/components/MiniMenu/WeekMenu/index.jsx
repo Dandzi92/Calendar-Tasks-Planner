@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import ResetMomentButton from '../../ResetButton';
 
 const WeekMenu = ({ appMoment }) => {
+  window.moment = moment();
   const currentMoment = moment(appMoment);
   const dispatch = useDispatch();
   const monthBeginTime = currentMoment
@@ -19,7 +20,8 @@ const WeekMenu = ({ appMoment }) => {
     .endOf('isoWeek');
 
   const weeksAmount = Math.ceil(monthEndTime.diff(monthBeginTime, 'days') / 7);
-  currentMoment.date(1);
+  const beginPeriodweeksDiff = Math.floor(currentMoment.diff(monthBeginTime, 'days') / 7);
+  currentMoment.subtract(beginPeriodweeksDiff, 'weeks');
 
   const setWeek = moment => {
     dispatch(setMoment(moment));
