@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import ModeButton from '../ModeButton';
 import AddEventsButton from '../AddEventsButton';
 import DateChanger from '../DateChanger';
 import { useDispatch } from 'react-redux';
 import { changeMode } from '../../features/calendar';
+import Modal from '../Modal';
+import AddEventForm from '../AddEventForm';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const [isModalOpened, toggleModal] = useState(false);
   return (
     <header className={styles.header}>
       <div className={styles.modes}>
@@ -31,7 +34,10 @@ const Header = () => {
         />
       </div>
       <DateChanger />
-      <AddEventsButton />
+      <AddEventsButton handler={() => toggleModal(true)} />
+      <Modal isOpened={isModalOpened} handleClose={() => toggleModal(false)}>
+        <AddEventForm />
+      </Modal>
     </header>
   );
 };
