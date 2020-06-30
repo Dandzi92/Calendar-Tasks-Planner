@@ -9,7 +9,7 @@ export const calendarFeature = createSlice({
     errors: [],
     appMoment: moment().format(),
     loading: false,
-    mode: 'day',
+    mode: 'month',
   },
   reducers: {
     addMoment: (state, { payload }) => {
