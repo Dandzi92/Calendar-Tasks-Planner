@@ -1,11 +1,12 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import { createSlice } from '@reduxjs/toolkit';
+import { assocPath, pathOr } from 'ramda';
 import moment from 'moment';
 
 export const calendarFeature = createSlice({
   name: 'calendar',
   initialState: {
-    events: [],
+    events: {},
     errors: [],
     appMoment: moment().format(),
     loading: false,
@@ -32,6 +33,31 @@ export const calendarFeature = createSlice({
     resetToNow: state => {
       state.appMoment = moment().format();
     },
+    addEvent: (state, { payload }) => {
+      const eventMomentStart = moment(payload.eventBegin);
+      const eventsObject = { ...state.events };
+      const events = pathOr(
+        [],
+        [
+          eventMomentStart.format('Y'),
+          eventMomentStart.format('MMMM'),
+          eventMomentStart.format('D'),
+          eventMomentStart.format('H'),
+        ],
+        eventsObject
+      );
+      events.push({ ...payload });
+      state.events = assocPath(
+        [
+          eventMomentStart.format('Y'),
+          eventMomentStart.format('MMMM'),
+          eventMomentStart.format('D'),
+          eventMomentStart.format('H'),
+        ],
+        events,
+        eventsObject
+      );
+    },
   },
 });
 
@@ -41,6 +67,7 @@ export const {
   changeMode,
   setMoment,
   resetToNow,
+  addEvent,
 } = calendarFeature.actions;
 export default calendarFeature.reducer;
 

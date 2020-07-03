@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 
 const Month = ({ appMoment, menuMode, handler }) => {
   const currentMoment = moment(appMoment);
+  window.moment = currentMoment;
   const daysCount = currentMoment.daysInMonth();
   const monthStartWeekday = currentMoment
     .clone()
