@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import styles from './styles.module.scss';
 import { useDispatch } from 'react-redux';
-import { addEvent } from '../../features/calendar';
+import { addEventRequest } from '../../features/calendar';
 
 const AddEventForm = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AddEventForm = () => {
       payload.eventEnd = moment(`${values.date} ${values.finish}`).format();
       payload.name = values.name;
       payload.description = values.description;
-      dispatch(addEvent(payload));
+      dispatch(addEventRequest(payload));
       console.log(values);
       formik.resetForm();
     },
