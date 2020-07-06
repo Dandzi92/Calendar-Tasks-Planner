@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { weekDays } from '../../../utils/weekDays';
 import moment from 'moment';
 import styles from './styles.module.scss';
+import CellContainer from '../../CellContainer';
 
 const Month = ({ appMoment, menuMode, handler }) => {
   const currentMoment = moment(appMoment);
@@ -40,41 +41,28 @@ const Month = ({ appMoment, menuMode, handler }) => {
         {[...Array(calendarRowsCount)].map((row, index) => (
           <tr key={index}>
             {[...Array(7)].map((row, i) => {
-              let returnValue;
               if (
                 index === 0 &&
                 (i === monthStartWeekday - 1 || (i === 6 && monthStartWeekday === 0))
               ) {
                 isMonthDaysMode = true;
               }
-              if (isMonthDaysMode) {
-                const timeStamp = counter.format();
-                returnValue = (
-                  <td
-                    className={classnames(styles['cell'], {
-                      [styles.menu]: menuMode,
-                    })}
-                    key={i}
-                    {...(menuMode && { onClick: () => handler(timeStamp) })}
-                  >
-                    <span className={styles.day}>{counter.date()}</span>
-                  </td>
-                );
-                counter.add('1', 'days');
-              } else {
-                returnValue = (
-                  <td
-                    className={classnames(styles['cell'], {
-                      [styles.menu]: menuMode,
-                    })}
-                    key={i}
-                  ></td>
-                );
-              }
+              const timeStamp = counter.format();
+              const counterValue = counter.date();
+              const returnComponent = (
+                <CellContainer
+                  isMonthDaysMode={isMonthDaysMode}
+                  counter={isMonthDaysMode ? counterValue : ''}
+                  key={`${i}-${index}`}
+                  menuHandler={() => handler(timeStamp)}
+                  menuMode={menuMode}
+                />
+              );
+              isMonthDaysMode && counter.add('1', 'days');
               if (counter.month() !== currentMoment.month()) {
                 isMonthDaysMode = false;
               }
-              return returnValue;
+              return returnComponent;
             })}
           </tr>
         ))}
