@@ -85,7 +85,6 @@ function* eventCreationWorker({ payload }) {
       events: getEvents(state),
     }));
     const newEventStart = moment(payload.eventBegin);
-    const newEventEnd = moment(payload.eventEnd);
     const eventCreationDay = pathOr(
       {},
       [newEventStart.format('Y'), newEventStart.format('MMMM'), newEventStart.format('D')],
@@ -93,12 +92,11 @@ function* eventCreationWorker({ payload }) {
     );
     Object.values(eventCreationDay).forEach(hourEvents => {
       hourEvents.forEach(event => {
-        const eventToCheckStart = moment(event.eventBegin);
-        const eventToCheckEnd = moment(event.eventEnd);
         if (
-          (newEventStart.diff(eventToCheckStart) >= 0 &&
-            newEventStart.diff(eventToCheckEnd) <= 0) ||
-          (newEventEnd.diff(eventToCheckStart) >= 0 && newEventEnd.diff(eventToCheckEnd) <= 0)
+          moment(payload.eventBegin).isBetween(event.eventBegin, event.eventEnd) ||
+          moment(payload.eventEnd).isBetween(event.eventBegin, event.eventEnd) ||
+          moment(event.eventBegin).isBetween(payload.eventBegin, payload.eventEnd) ||
+          moment(event.eventEnd).isBetween(payload.eventBegin, payload.eventEnd)
         ) {
           throw new Error('Events are crossing');
         }

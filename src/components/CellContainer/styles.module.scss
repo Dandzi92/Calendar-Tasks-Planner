@@ -3,6 +3,11 @@
   width: 200px;
   height: 100px;
   position: relative;
+
+  &.week {
+    overflow-y: auto;
+    height: 500px;
+  }
   &.menu {
     width: 30px;
     height: 30px;
@@ -13,8 +18,24 @@
   }
 }
 
+.container {
+  overflow-y: auto;
+}
+
 .day {
   position: absolute;
   top: 5px;
   left: 5px;
+}
+
+.event {
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    margin: 0 5px;
+  }
 }

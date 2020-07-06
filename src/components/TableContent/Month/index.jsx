@@ -52,10 +52,11 @@ const Month = ({ appMoment, menuMode, handler }) => {
               const returnComponent = (
                 <CellContainer
                   isMonthDaysMode={isMonthDaysMode}
-                  counter={isMonthDaysMode ? counterValue : ''}
+                  counter={isMonthDaysMode ? counter.date() : ''}
                   key={`${i}-${index}`}
                   menuHandler={() => handler(timeStamp)}
                   menuMode={menuMode}
+                  timeStamp={timeStamp}
                 />
               );
               isMonthDaysMode && counter.add('1', 'days');
