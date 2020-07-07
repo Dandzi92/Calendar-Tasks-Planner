@@ -7,7 +7,104 @@ import { getEvents } from '../utils/selectors';
 export const calendarFeature = createSlice({
   name: 'calendar',
   initialState: {
-    events: {},
+    events: {
+      '2020': {
+        July: {
+          '6': {
+            '0': [
+              {
+                eventBegin: '2020-07-06T00:02:00+03:00',
+                eventEnd: '2020-07-06T00:03:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '8': [
+              {
+                eventBegin: '2020-07-06T08:41:00+03:00',
+                eventEnd: '2020-07-06T09:41:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '10': [
+              {
+                eventBegin: '2020-07-06T10:40:00+03:00',
+                eventEnd: '2020-07-06T11:40:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '11': [
+              {
+                eventBegin: '2020-07-06T11:41:00+03:00',
+                eventEnd: '2020-07-06T12:41:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '19': [
+              {
+                eventBegin: '2020-07-06T19:42:00+03:00',
+                eventEnd: '2020-07-06T20:42:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '20': [
+              {
+                eventBegin: '2020-07-06T20:43:00+03:00',
+                eventEnd: '2020-07-06T21:42:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+          },
+          10: {
+            '8': [
+              {
+                eventBegin: '2020-07-06T08:41:00+03:00',
+                eventEnd: '2020-07-06T09:41:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '10': [
+              {
+                eventBegin: '2020-07-06T10:40:00+03:00',
+                eventEnd: '2020-07-06T11:40:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '11': [
+              {
+                eventBegin: '2020-07-06T11:41:00+03:00',
+                eventEnd: '2020-07-06T12:41:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '19': [
+              {
+                eventBegin: '2020-07-06T19:42:00+03:00',
+                eventEnd: '2020-07-06T20:42:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+            '20': [
+              {
+                eventBegin: '2020-07-06T20:43:00+03:00',
+                eventEnd: '2020-07-06T21:42:00+03:00',
+                name: 'hjkhk',
+                description: 'gfhhhfhfhfghfghfghfhfgfhg',
+              },
+            ],
+          },
+        },
+      },
+    },
     errors: [],
     appMoment: moment().format(),
     loading: false,

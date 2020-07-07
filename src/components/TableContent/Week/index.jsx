@@ -26,7 +26,7 @@ const Week = ({ appMoment }) => {
             const timeStamp = weekStartDay.format();
             const returnComponent = (
               <CellContainer
-                key={index}
+                key={`${index}-${weekStartDay.isoWeek()}-${weekStartDay.year()}`}
                 isWeek
                 counter={weekStartDay.date()}
                 menuHandler={() => {}}

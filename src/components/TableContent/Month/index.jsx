@@ -48,12 +48,12 @@ const Month = ({ appMoment, menuMode, handler }) => {
                 isMonthDaysMode = true;
               }
               const timeStamp = counter.format();
-              const counterValue = counter.date();
+
               const returnComponent = (
                 <CellContainer
                   isMonthDaysMode={isMonthDaysMode}
                   counter={isMonthDaysMode ? counter.date() : ''}
-                  key={`${i}-${index}`}
+                  key={`${i}-${index}-${counter.month()}-${counter.year()}`}
                   menuHandler={() => handler(timeStamp)}
                   menuMode={menuMode}
                   timeStamp={timeStamp}
