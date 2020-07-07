@@ -29,6 +29,7 @@ const CellContainer = ({ menuMode, counter, isMonthDaysMode, menuHandler, isWeek
     let overallHeight = 0;
     let eventsElements = Array.from(overflowContainerRef.current.children);
     let eventsElementsOverflowed = [];
+
     if (overflowContainerRef.current.scrollHeight > overflowContainerRef.current.clientHeight) {
       eventsElementsOverflowed = eventsElements.reduce((acc, item) => {
         overallHeight += item.clientHeight;
@@ -55,13 +56,20 @@ const CellContainer = ({ menuMode, counter, isMonthDaysMode, menuHandler, isWeek
       })}
       {...(menuMode && isMonthDaysMode && { onClick: menuHandler })}
     >
-      <span className={styles.day}>{counter}</span>
+      <span className={classnames(styles.day, { [styles.shadow]: !isEmpty(currentDayEvents) })}>
+        {counter}
+      </span>
 
-      <div className={styles.container} ref={overflowContainerRef}>
+      <div className={classnames({ [styles.container]: !isWeek })} ref={overflowContainerRef}>
         {!menuMode &&
-          flattenEvents.slice(0, eventsToRender).map((item, index) => {
+          flattenEvents.map((item, index) => {
             return (
-              <div className={styles.event} key={`${index}${item.name}`}>
+              <div
+                className={classnames(styles.event, {
+                  [styles.hidden]: index >= eventsToRender && !isWeek,
+                })}
+                key={`${index}${item.name}`}
+              >
                 <span>{item.name}</span>
                 <span>{`${moment(item.eventBegin).format('HH-mm')}:${moment(item.eventEnd).format(
                   'HH-mm'
