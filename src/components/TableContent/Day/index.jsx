@@ -6,14 +6,32 @@ import { dayPeriods } from '../../../utils/dayPeriods';
 const Day = ({ appMoment }) => {
   return (
     <tbody className={styles.tbody}>
-      {Object.values(dayPeriods).map(cell => (
-        <tr className={styles.row} key={cell}>
-          <td className={styles['title-cell']} key={cell}>
-            {cell}
-          </td>
-          <td className={styles['events-cell']}></td>
-        </tr>
-      ))}
+      <tr>
+        <td className={styles.times}>
+          <table>
+            <tbody>
+              {Object.values(dayPeriods).map(cell => (
+                <tr className={styles.row} key={cell}>
+                  <td className={styles['title-cell']} key={cell}>
+                    {cell}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </td>
+        <td className={styles.events}>
+          <table>
+            <tbody>
+              {Object.values(dayPeriods).map(cell => (
+                <tr className={styles.row} key={cell}>
+                  <td className={styles['events-cell']}></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </td>
+      </tr>
     </tbody>
   );
 };

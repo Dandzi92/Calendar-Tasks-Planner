@@ -12,3 +12,18 @@
   border: 1px solid black;
   width: 80%;
 }
+
+.tbody table {
+  border-collapse: collapse;
+}
+
+.times {
+  width: 20%;
+}
+
+.events {
+  width: 80%;
+  table {
+    width: 100%;
+  }
+}
