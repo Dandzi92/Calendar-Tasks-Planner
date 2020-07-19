@@ -22,6 +22,12 @@ const Day = ({ appMoment }) => {
         <div
           style={{
             top: `${time * (100 / 24) + (100 / 24) * (moment(item.eventBegin).format('m') / 60)}%`,
+            height: `${Math.floor(
+              moment(item.eventEnd).diff(moment(item.eventBegin), 'minutes') / 60
+            ) *
+              (100 / 24) +
+              (100 / 24) *
+                ((moment(item.eventEnd).diff(moment(item.eventBegin), 'minutes') % 60) / 60)}%`,
           }}
           className={styles.event}
           key={`${i}-${index}-${appMoment}`}

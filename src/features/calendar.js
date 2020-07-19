@@ -21,7 +21,7 @@ export const calendarFeature = createSlice({
             ],
             '8': [
               {
-                eventBegin: '2020-07-06T08:41:00+03:00',
+                eventBegin: '2020-07-06T08:05:00+03:00',
                 eventEnd: '2020-07-06T09:41:00+03:00',
                 name: 'hjkhk',
                 description: 'gfhhhfhfhfghfghfghfhfgfhg',
