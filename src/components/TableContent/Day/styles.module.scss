@@ -28,3 +28,18 @@
     width: 100%;
   }
 }
+
+.event {
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 150px;
+  width: 100%;
+  position: absolute;
+  span {
+    margin: 0 5px;
+  }
+}
